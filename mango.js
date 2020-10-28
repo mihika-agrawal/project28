@@ -16,9 +16,14 @@ this.image=loadImage("Plucking mangoes/mango.png");
 }
 display(){
 var p=this.body.position;
-imageMode(RADIUS)
-image(this.image,p.x,p.y,this.radius*2,this.radius*2);
-
+push()
+		translate(p.x,p.y);
+		rotate(this.body.angle)
+		fill(255,0,255)
+		imageMode(CENTER);
+		ellipseMode(CENTER);
+		image(this.image, 0,0,this.r*2, this.r*2)
+		pop()
 
 
 }
