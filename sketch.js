@@ -29,7 +29,11 @@ function setup() {
 	stone= new Stone(85,560);
 	stone.scale=0.5
 	launcher= new Launcher(stone.body,{x:85,y:560})
-	mango1 = new Mango(500,400);
+	mango1 = new Mango(500,300,20);
+	mango2= new Mango(660,340,20);
+	mango3 = new Mango(670,230,30);
+	mango4 = new Mango(540,220,20);
+	mango5 = new Mango(590,325,20);
 	Engine.run(engine);
   
 }
@@ -37,14 +41,27 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background("grey");
+  background("white");
+  textSize(25);
+  text("Press Space to get a second Chance to Play!!",100 ,50);
   
   drawSprites();
  ground.display();
  tree.display();
  stone.display();
  mango1.display();
+ mango2.display();
+ mango3.display();
+ mango4.display();
+ mango5.display();
+
  launcher.display();
+
+detectCollision(stone,mango1);
+  detectCollision(stone,mango2);
+  detectCollision(stone,mango3);
+ detectCollision(stone,mango4);
+  detectCollision(stone,mango5);
 }
 
 
@@ -59,9 +76,10 @@ function mouseReleased(){
 function detectCollision(lstone,lmango){
 mangop= lmango.body.position;
 stonep= lstone.body.position;
-var distance=dist(stonep.x,stonep.y,mangop.x,mango,y)
-if(distance<= lmango.radius+lstone.radius){
-Matter.Body.setStatic(lmango.body,false);
+var distance=dist(stonep.x,stonep.y,mangop.x,mangop.y)
+if(distance <= lmango.r+lstone.r){
+ 
+	Matter.Body.setStatic(lmango.body,false);
 
 }
 

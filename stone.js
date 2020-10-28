@@ -8,17 +8,15 @@ constructor(x,y){
         }
         this.body=Matter.Bodies.circle(x,y,30,options)
         World.add(world,this.body);
-        this.radius=30;
+        this.r=30;
         this.x=x;
         this.y=y;
         this.image=loadImage("Plucking mangoes/stone.png");
 }
         display(){
-        var p=this.body.position;
+       var p=this.body.position;
         imageMode(RADIUS)
-  
-
-        image(this.image,p.x,p.y,this.radius*2,this.radius*2);
+         image(this.image,p.x,p.y,this.r*2,this.r*2);
         
         
         
